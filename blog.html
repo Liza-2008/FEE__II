@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Blog Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+            gap: 40px; /* Space between columns */
+        }
+        .main-content {
+            flex: 2; /* Takes up more space */
+            min-width: 300px; /* Minimum width before wrapping */
+        }
+        .sidebar {
+            flex: 1; /* Takes up less space */
+            min-width: 150px; /* Minimum width before wrapping */
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #555;
+        }
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        /* Basic responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column; /* Stack columns vertically on smaller screens */
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-content">
+            <h1>A Blog Post</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce luctus, mauris a gravida placerat, turpis leo tristique sapien, a sodales odio libero at leo. Nullam augue lacus, dictum sit amet aliquam vel, volutpat ut nisi.
+            </p>
+            <p>
+                Cras pretium, elit eget feugiat ultricies, ipsum tortor tempor lacus, nec feugiat arcu augue sit amet erat. Suspendisse potenti. Nunc placerat tincidunt sapieneuismod convallis.
+            </p>
+        </div>
+        <div class="sidebar">
+            <h2>Recent Posts</h2>
+            <ul>
+                <li>Post One</li>
+                <li>Post Two</li>
+                <li>Post Three</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
