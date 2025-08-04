@@ -20,12 +20,12 @@
 
   <section class="intro">
     <p>Hello, fellow traveler! Welcome to my travel blog where I share unforgettable adventures and tips from around the world.</p>
-    <img src="travel.jpg" alt="Travel Image" width="400">
+    <img src="travel.jpg" alt="Travel Image" class="main-image">
   </section>
 
   <section class="table-section">
     <h2>Top 3 Travel Destinations</h2>
-    <table border="1">
+    <table>
       <tr>
         <th>Country</th>
         <th>Best Time to Visit</th>
@@ -49,11 +49,13 @@
     </table>
   </section>
 
-  <blockquote>“Travel is the only thing you buy that makes you richer.”</blockquote>
+  <section class="quote-section">
+    <blockquote>“Travel is the only thing you buy that makes you richer.”</blockquote>
+  </section>
 
   <section class="media">
-    <h3>My Last Trip</h3>
-    <video width="400" controls>
+    <h2>My Last Trip</h2>
+    <video width="500" controls>
       <source src="trip.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
@@ -64,25 +66,37 @@
   </section>
 
   <section class="form-section">
-    <h3>Plan Your Trip</h3>
+    <h2>Plan Your Trip</h2>
     <form>
-      <label>Full Name: <input type="text" name="fullname"></label><br>
-      <label>Destination Interest:
+      <label>Full Name:<br>
+        <input type="text" name="fullname" required>
+      </label><br><br>
+
+      <label>Destination Interest:<br>
         <select name="destination">
           <option>Japan</option>
           <option>Italy</option>
           <option>New Zealand</option>
         </select>
-      </label><br>
-      <label>Type of Traveler:</label><br>
-      <label><input type="checkbox" name="type" value="Solo"> Solo</label>
-      <label><input type="checkbox" name="type" value="Family"> Family</label>
-      <label><input type="checkbox" name="type" value="Luxury"> Luxury</label><br>
-      <label>Email ID: <input type="email" name="email"></label><br>
+      </label><br><br>
+
+      <label>Type of Traveler:<br>
+        <input type="checkbox" name="type" value="Solo"> Solo
+        <input type="checkbox" name="type" value="Family"> Family
+        <input type="checkbox" name="type" value="Luxury"> Luxury
+      </label><br><br>
+
+      <label>Email ID:<br>
+        <input type="email" name="email" required>
+      </label><br><br>
+
       <button type="submit">Submit</button>
     </form>
   </section>
 
-  <footer>&copy; 2025 Wanderlust Diaries. All rights reserved.</footer>
+  <footer>
+    &copy; 2025 Wanderlust Diaries. All rights reserved.
+  </footer>
+
 </body>
 </html>
