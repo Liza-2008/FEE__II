@@ -3,6 +3,7 @@ body {
   margin: 0;
   background-color: #f0f8ff;
   color: #333;
+  line-height: 1.6;
 }
 
 header {
@@ -14,28 +15,85 @@ header {
 
 nav a {
   margin: 0 15px;
-  color: white;
+  color: #fff;
   text-decoration: none;
+  font-weight: bold;
 }
 
-.intro, .table-section, .media, .form-section {
+nav a:hover {
+  text-decoration: underline;
+}
+
+.intro, .table-section, .quote-section, .media, .form-section {
   padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin-top: 10px;
+}
+
+h2 {
+  color: #004d66;
+  margin-top: 30px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 th, td {
+  border: 1px solid #ccc;
   padding: 10px;
   text-align: center;
+}
+
+blockquote {
+  font-style: italic;
+  background-color: #e0f7fa;
+  padding: 15px;
+  border-left: 5px solid #004d66;
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+}
+
+video {
+  display: block;
+  margin: 20px auto;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+
+form input, form select, form button {
+  padding: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin-top: 5px;
+}
+
+form button {
+  background-color: #004d66;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+form button:hover {
+  background-color: #006080;
 }
 
 footer {
   background-color: #004d66;
   color: white;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
+  margin-top: 40px;
 }
