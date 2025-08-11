@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Box Model — Demo</title>
+  <style>
+    :root{
+      --box-width: 200px;
+      --box-height: 120px;
+      --padding: 20px;
+      --border: 6px;
+      --margin: 24px;
+      --bg: #e9f5ff;
+      --accent: #1e88e5;
+      --muted: #555;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    body{
+      margin:0; padding:24px; background: #f7fbff; color: #222;
+      display:flex; gap:24px; min-height:100vh; align-items:flex-start;
+    }
+
+    /* Left: interactive demo */
+    .demo{
+      width: 520px; background: white; border-radius:12px; box-shadow:0 6px 18px rgba(30,30,60,0.06); padding:18px;
+    }
+
+    h1{font-size:18px; margin:0 0 10px 0}
+    p.lead{margin:4px 0 18px 0; color:var(--muted); font-size:13px}
+
+    .stage{
+      padding:16px; background:linear-gradient(180deg,#fbfeff,#f4fbff); border-radius:10px;
+      display:flex; justify-content:center; align-items:center; min-height:260px;
+    }
+
+    /* The box we'll visually explain */
+    .box-wrap{ /* this element demonstrates margin */
+      --w: var(--box-width);
+      --h: var(--box-height);
+      margin: var(--margin);
+      display:inline-block;
+    }
+
+    .box-border{ /* shows border */
+      border: var(--border) solid var(--accent);
+      display:inline-block;
+      box-sizing: content-box; /* intentionally content-box to show how padding affects size */
+    }
+
+    .box-padding{ /* shows padding */
+      padding: var(--padding);
+      background: var(--bg);
+      display:inline-block;
+    }
+
+    .box-content{
+      width: var(--w);
+      height: var(--h);
+      background: linear-gradient(180deg,#ffffff,#f0f8ff);
+      display:flex; align-items:center; justify-content:center;
+      color: #123; font-weight:600; border-radius:6px;
+    }
+
+    /* Inspector */
+    .inspector{margin-top:14px; display:grid; grid-template-columns:repeat(2,1fr); gap:8px}
+    .field{display:flex; flex-direction:column; gap:6px}
+    label{font-size:12px; color:var(--muted)}
+    input[type=range]{width:100%}
+    .value{font-weight:700; font-size:13px; color:var(--accent)}
+
+    /* Right: explanation panel */
+    .panel{
+      width:420px; background:white; border-radius:12px; padding:18px; box-shadow:0 6px 18px rgba(30,30,60,0.04);
+    }
+    .ex{font-size:13px; color:#333; line-height:1.45}
+    pre{background:#0b1720; color:#dff3ff; padding:10px; border-radius:8px; overflow:auto}
+
+    .legend{display:flex; gap:8px; align-items:center; margin:8px 0}
+    .swatch{width:16px; height:16px; border-radius:4px}
+    .sw-margin{background:#fff3e0; border:1px solid #ffd699}
+    .sw-border{background:#ffe6f0; border:1px solid #ff9fcf}
+    .sw-padding{background:#e8f8ee; border:1px solid #b7e9c0}
+    .sw-content{background:#e9f5ff; border:1px solid #a9d4ff}
+
+    footer{margin-top:14px; color:var(--muted); font-size:12px}
+
+    @media (max-width:980px){
+      body{flex-direction:column; padding:12px}
+      .demo, .panel{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <section class="demo">
+    <h1>CSS Box Model — Interactive Demo</h1>
+    <p class="lead">Drag the sliders to change the <strong>margin</strong>, <strong>border</strong>, and <strong>padding</strong> values. The central box shows how each affects layout and size.</p>
+
+    <div class="stage">
+      <!-- box-wrap demonstrates margin (space outside border) -->
+      <div class="box-wrap" id="boxWrap">
+        <!-- box-border demonstrates border thickness -->
+        <div class="box-border" id="boxBorder">
+          <!-- box-padding demonstrates padding (space inside border, outside content) -->
+          <div class="box-padding" id="boxPadding">
+            <!-- box-content is the actual content area -->
+            <div class="box-content" id="boxContent">CONTENT</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="inspector" aria-hidden="false">
+      <div class="field">
+        <label>Margin (<span class="value" id="marginVal">24px</span>)</label>
+        <input id="margin" type="range" min="0" max="80" value="24">
+      </div>
+
+      <div class="field">
+        <label>Border (<span class="value" id="borderVal">6px</span>)</label>
+        <input id="border" type="range" min="0" max="30" value="6">
+      </div>
+
+      <div class="field">
+        <label>Padding (<span class="value" id="paddingVal">20px</span>)</label>
+        <input id="padding" type="range" min="0" max="60" value="20">
+      </div>
+
+      <div class="field">
+        <label>Content width (& height) (<span class="value" id="sizeVal">200 × 120</span>)</label>
+        <input id="contentW" type="range" min="60" max="420" value="200">
+      </div>
+    </div>
+
+    <footer>Tip: box-sizing changes how width/height include padding and border. This demo uses <code>box-sizing: content-box</code> to make padding increase the overall size.</footer>
+  </section>
+
+  <aside class="panel">
+    <h2 style="margin-top:0">What the Box Model is</h2>
+    <div class="ex">
+      Every HTML element is represented as a rectangular box made up of (from outside to inside):
+      <ol>
+        <li><strong>Margin</strong> — transparent space outside the border; separates elements.</li>
+        <li><strong>Border</strong> — sits between margin and padding; draws an edge around the element.</li>
+        <li><strong>Padding</strong> — space between the border and the content; increases the clickable area and spacing inside the box.</li>
+        <li><strong>Content</strong> — the width/height set on the element (text, images, etc.).</li>
+      </ol>
+
+      <div class="legend">
+        <div class="swatch sw-margin"></div><small>Margin</small>
+        <div style="width:6px"></div>
+        <div class="swatch sw-border"></div><small>Border</small>
+        <div style="width:6px"></div>
+        <div class="swatch sw-padding"></div><small>Padding</small>
+        <div style="width:6px"></div>
+        <div class="swatch sw-content"></div><small>Content</small>
+      </div>
+
+      <h3>Example code</h3>
+      <pre>&lt;div class="box" style="width:200px; padding:20px; border:6px solid #1e88e5; margin:24px;"&gt;CONTENT&lt;/div&gt;</pre>
+
+      <p class="ex">Note about <code>box-sizing</code>:
+      <strong>content-box</strong> (the default) means the <code>width</code> and <code>height</code> apply to the content box only; padding and border add to the outside size. With <strong>border-box</strong>, the <code>width</code> includes padding and border (often easier for layouts).</p>
+
+      <h4>Quick reference</h4>
+      <ul>
+        <li>To reset layouts: <code>*{box-sizing:border-box}</code> is a common pattern.</li>
+        <li>Margins between block elements collapse vertically — two stacked margins may overlap.</li>
+        <li>Padding never collapses with margins.</li>
+      </ul>
+    </div>
+  </aside>
+
+  <script>
+    // Grab controls and elements
+    const margin = document.getElementById('margin');
+    const border = document.getElementById('border');
+    const padding = document.getElementById('padding');
+    const contentW = document.getElementById('contentW');
+
+    const boxWrap = document.getElementById('boxWrap');
+    const boxBorder = document.getElementById('boxBorder');
+    const boxPadding = document.getElementById('boxPadding');
+    const boxContent = document.getElementById('boxContent');
+
+    const marginVal = document.getElementById('marginVal');
+    const borderVal = document.getElementById('borderVal');
+    const paddingVal = document.getElementById('paddingVal');
+    const sizeVal = document.getElementById('sizeVal');
+
+    function update(){
+      const m = margin.value + 'px';
+      const b = border.value + 'px';
+      const p = padding.value + 'px';
+      const w = contentW.value + 'px';
+      const h = Math.round(Number(contentW.value) * 0.6) + 'px';
+
+      boxWrap.style.margin = m;
+      boxBorder.style.borderWidth = b;
+      boxPadding.style.padding = p;
+      boxContent.style.width = w;
+      boxContent.style.height = h;
+
+      marginVal.textContent = m;
+      borderVal.textContent = b;
+      paddingVal.textContent = p;
+      sizeVal.textContent = contentW.value + ' × ' + Math.round(Number(contentW.value)*0.6);
+    }
+
+    // Initial update
+    update();
+
+    // Wire events
+    [margin,border,padding,contentW].forEach(el => el.addEventListener('input', update));
+  </script>
+</body>
+</html>
