@@ -1,0 +1,114 @@
+* { box-sizing: border-box; }
+
+:root {
+  --bg: #0e0f12;
+  --card: #151821;
+  --text: #e9ecf1;
+  --muted: #aab3c2;
+  --accent: #6aa7ff;
+  --pill-bg: #1e2430;
+  --code-bg: #0b0d12;
+  --shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: radial-gradient(1200px 600px at 20% 0%, #121520, #0b0c10 60%) fixed;
+  color: var(--text);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.wrap {
+  max-width: 900px;
+  margin: 6vh auto;
+  padding: 28px;
+  background: var(--card);
+  border: 1px solid #232836;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin: 0 0 20px;
+  letter-spacing: 0.3px;
+}
+
+h1 .var {
+  padding: 2px 8px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #3c6fff, #7bb6ff);
+  color: #0b1020;
+  font-weight: 700;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 18px;
+  align-items: center;
+  margin: 22px 0 10px;
+}
+
+.step {
+  background: linear-gradient(180deg, #192031, #141a27);
+  border: 1px solid #263044;
+  border-radius: 14px;
+  padding: 16px;
+  min-height: 140px;
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pill {
+  display: inline-block;
+  padding: 8px 12px;
+  background: var(--pill-bg);
+  border: 1px solid #2a3448;
+  border-radius: 999px;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+code {
+  display: block;
+  background: var(--code-bg);
+  border: 1px solid #1c2230;
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: #cfe1ff;
+  font-size: 0.95rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  overflow-x: auto;
+}
+
+.arrow {
+  font-size: 2rem;
+  color: var(--accent);
+  text-align: center;
+  line-height: 1;
+  user-select: none;
+}
+
+.note {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+  .arrow { display: none; }
+}
